@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from typo import typo
 
 app = Flask(__name__)
 
@@ -10,9 +11,9 @@ def form():
 
 @app.route('/typograf', methods=['POST'])
 def typograf():
-    text = request.form['text']
-    return text.upper()
+    text = typo(request.form['text'])
+    return text
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
